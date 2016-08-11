@@ -1,0 +1,23 @@
+{
+  "name": "redhat-restapi",
+  "version": "0.0.1",
+  "description": "Redhat mobile rest API solution",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JameelB/redhat-practical-exercises.git"
+  },
+  "author": "Jameel Briones",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JameelB/redhat-practical-exercises/issues"
+  },
+  "homepage": "https://github.com/JameelB/redhat-practical-exercises#readme",
+  "dependencies": {
+    "mongoose": "^4.5.8",
+    "restify": "^4.1.1"
+  }
+}
