@@ -69,3 +69,84 @@
         }
       });
     ```
+
+**SHOW USER**
+* **URL**
+
+  /user/:username
+
+* **Method:**
+
+  `GET`
+*  **URL Params**
+
+  **Filter: (Optional)**
+
+  ` filter=<String>,<String>,<String>... `
+
+* **Data Params**
+
+  None
+
+* **Success Response:**
+
+  * **Code:** 200 <br />
+    **Content:**
+
+      ```
+        {
+        "gender": "male",
+        "name": {
+          "title": "mr",
+          "first": "andy",
+          "last": "adams"
+        },
+        "location": {
+          "street": "5857 woodlawn avenue",
+          "city": "Westport",
+          "state": "alaska",
+          "zip": 71280
+        },
+        "email": "andy.adams@example.com",
+        "username": "beautifulfish360",
+        "password": "123457",
+        "salt": "HsxzewdQ",
+        "md5": "5809e5fda81eed34bad9ca6eff414924",
+        "sha1": "6c95f0d9210e88028074d4baaeefc3d6c830a9a3",
+        "sha256": "f92fc585c017d093b03dba898162613380f137f934637c5bf9050fe68c103c54",
+        "registered": 1180746503,
+        "dob": 1028583070,
+        "phone": "041-252-0953",
+        "cell": "081-567-1935",
+        "PPS": "2470896T",
+        "picture": {
+          "large": "https://randomuser.me/api/portraits/men/75.jpg",
+          "medium": "https://randomuser.me/api/portraits/med/men/75.jpg",
+          "thumbnail": "https://randomuser.me/api/portraits/thumb/men/75.jpg"
+        }
+    }
+
+      ```
+
+* **Error Response:**
+
+  * **Code:** 404 <br />
+    **Content:** `{ err : "User not found" }`
+
+  OR
+
+  * **Code:** 400 <br/>
+
+* **Sample Call:**
+
+  ```javascript
+    var filters = ['username', 'email', 'location'];
+    $.ajax({
+      url: "/users/beautifulfish360?filter=" + filters.join(','),
+      dataType: "json",
+      type : "GET",
+      success : function(r) {
+        console.log(r);
+      }
+    });
+  ```
