@@ -36,3 +36,15 @@ server.get('/users', function(req, res, next){
     	}
     }).lean();
 });
+
+server.get('/user/:username', function(req, res, next) {
+	User.findOne({
+		username : req.params.username
+	}, filter, function(err, user) {
+		if(err) res.send(400, err);
+		if(user) res.send(user);
+		else res.send(404, {
+			err: 'User not found.'
+		});
+	}).lean();
+});
