@@ -250,3 +250,43 @@
       }
     });
   ```
+
+**DELETE USER**
+* **URL**
+
+  /user/:username
+
+* **Method:**
+
+  `DELETE`
+
+*  **URL Params**
+
+  None
+
+* **Data Params**
+
+  None
+
+* **Success Response:**
+
+  * **Code:** 204 <br />
+
+
+* **Error Response:**
+
+  * **Code:** 400 <br />
+
+
+* **Sample Call:**
+
+  ```javascript
+    $.ajax({
+      url: "/user/beautifulfish360",
+      dataType: "json",
+      type : "DELETE",
+      success : function(r) {
+        console.log(r);
+      }
+    });
+  ```
