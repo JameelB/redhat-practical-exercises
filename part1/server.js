@@ -28,7 +28,7 @@ server.get('/users', function(req, res, next){
         if(doc) {
         	res.send(doc.map(function(obj) {
         		return{ md5: obj.md5, uri: 'user/' + obj.username };
-        	})); 
+        	}));
         }
     }).lean();
 });
@@ -53,7 +53,7 @@ server.del('/user/:username', function(req, res, next) {
 		username : req.params.username
 	}).remove(function(err) {
 		if(err) res.send(400, err);
-		else res.send(204);		
+		else res.send(204);
 	});
 
 	return next();
@@ -61,7 +61,7 @@ server.del('/user/:username', function(req, res, next) {
 
 server.post('/user', function(req, res, next) {
 	var user = new User({
-		gender: req.params.gender, 
+		gender: req.params.gender,
 		name: req.params.name,
 		location: req.params.location,
 		email: req.params.email,
@@ -72,16 +72,16 @@ server.post('/user', function(req, res, next) {
 		sha1: req.params.sha1,
 		sha256: req.params.sha256,
 		registered: req.params.registered,
-		dob: req.params.dob, 
-		phone: req.params.phone, 
-		cell: req.params.cell, 
+		dob: req.params.dob,
+		phone: req.params.phone,
+		cell: req.params.cell,
 		PPS: req.params.PPS,
 		picture: req.params.picture
 	});
 
 	user.save(function(err) {
 		if(err) res.send(400, {
-			err:err.message, 
+			err:err.message,
 			details:err.errors
 		});
 
@@ -95,7 +95,7 @@ server.put('/user/:username', function(req, res, next) {
 		username: req.params.username
 	}, {
 		$set: {
-		gender: req.params.gender, 
+		gender: req.params.gender,
 		name: req.params.name,
 		location: req.params.location,
 		email: req.params.email,
@@ -106,9 +106,9 @@ server.put('/user/:username', function(req, res, next) {
 		sha1: req.params.sha1,
 		sha256: req.params.sha256,
 		registered: req.params.registered,
-		dob: req.params.dob, 
-		phone: req.params.phone, 
-		cell: req.params.cell, 
+		dob: req.params.dob,
+		phone: req.params.phone,
+		cell: req.params.cell,
 		PPS: req.params.PPS,
 		picture: req.params.picture
 	}}, function(err) {
@@ -118,7 +118,6 @@ server.put('/user/:username', function(req, res, next) {
 });
 
 server.get('/users/search', function(req, res, next) {
-	//TO DO
 	var filter = '-_id ';
 	if(req.params.filter) {
 		filter += req.params.filter.replace(/,/g, ' ');
@@ -140,4 +139,3 @@ server.get('/users/search', function(req, res, next) {
 server.listen(server_port, server_ip_address, function() {
     console.log('%s listening at %s', server.name, server.url);
 });
-
