@@ -34,6 +34,9 @@ server.get('/users', function(req, res, next){
 });
 
 server.get('/user/:username', function(req, res, next) {
+	var filter = '-_id ';
+	if(req.params.filter) filter += req.params.filter.replace(/,/g, ' ');
+	
 	User.findOne({
 		username : req.params.username
 	}, filter, function(err, user) {
