@@ -95,28 +95,28 @@ server.post('/user', function(req, res, next) {
 });
 
 server.put('/user/:username', function(req, res, next) {
+	console.log(req.params);
 	User.findOneAndUpdate({
 		username: req.params.username
 	}, {
 		$set: {
-			gender: req.params.gender, 
-			name: req.params.name,
-			location: req.params.location,
-			email: req.params.email,
-			username: req.params.username,
-			password: req.params.password,
-			salt: req.params.salt,
-			md5: req.params.md5,
-			sha1: req.params.sha1,
-			sha256: req.params.sha256,
-			registered: req.params.registered,
-			dob: req.params.dob, 
-			phone: req.params.phone, 
-			cell: req.params.cell, 
-			PPS: req.params.PPS,
-			picture: req.params.picture
-		}
-	}, function(err) {
+		gender: req.params.gender, 
+		name: req.params.name,
+		location: req.params.location,
+		email: req.params.email,
+		username: req.params.username,
+		password: req.params.password,
+		salt: req.params.salt,
+		md5: req.params.md5,
+		sha1: req.params.sha1,
+		sha256: req.params.sha256,
+		registered: req.params.registered,
+		dob: req.params.dob, 
+		phone: req.params.phone, 
+		cell: req.params.cell, 
+		PPS: req.params.PPS,
+		picture: req.params.picture
+	}}, function(err) {
 		if(err) res.send(400, err);
 		else res.send(204)
 	});
