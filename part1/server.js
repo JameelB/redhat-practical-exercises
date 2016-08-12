@@ -20,3 +20,7 @@ server.use(logger('custom', {
         return process.env.NODE_ENV === "test" || req.method === "OPTIONS" || req.url === "/status";
     }
 }));
+
+server.listen(server_port, server_ip_address, function() {
+    console.log('%s listening at %s', server.name, server.url);
+});
