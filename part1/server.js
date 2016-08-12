@@ -36,7 +36,7 @@ server.get('/users', function(req, res, next){
 server.get('/user/:username', function(req, res, next) {
 	var filter = '-_id ';
 	if(req.params.filter) filter += req.params.filter.replace(/,/g, ' ');
-	
+
 	User.findOne({
 		username : req.params.username
 	}, filter, function(err, user) {
@@ -115,6 +115,31 @@ server.put('/user/:username', function(req, res, next) {
 		if(err) res.send(400, err);
 		else res.send(204)
 	});
+});
+
+server.get('/users/search', function(req, res, next) {
+	//TO DO
+	var filter = '-_id ';
+	if(req.params.filter) {
+		filter += req.params.filter.replace(/,/g, ' ');
+		delete req.params.filter;
+	}
+
+	Object.keys(req.params).forEach(function(key) {
+		req.params[key] = new RegExp(req.params[key], 'i');
+	});
+
+	User.find(req.params, filter, function(err, doc) {
+		if(err) res.send(400, err);
+		if(doc.length != 0) res.send(doc);
+		else {
+			res.send(404, {
+				err: 'No results'
+			});
+		}
+	}).lean();
+
+	return next();
 });
 
 server.listen(server_port, server_ip_address, function() {
