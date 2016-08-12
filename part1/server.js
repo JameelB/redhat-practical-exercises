@@ -48,3 +48,14 @@ server.get('/user/:username', function(req, res, next) {
 		});
 	}).lean();
 });
+
+server.del('/user/:username', function(req, res, next) {
+	User.findOne({
+		username : req.params.username
+	}).remove(function(err) {
+		if(err) res.send(400, err);
+		else res.send(204);		
+	});
+
+	return next();
+});
