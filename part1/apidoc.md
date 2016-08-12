@@ -49,12 +49,7 @@
 
   * **Error Response:**
 
-    * **Code:** 404 <br />
-      **Content:** `{ err : "No users available" }`
-
-    OR
-
-    * **Code:** 400 <br/>
+    * **Code:** 400 <br />
 
 
   * **Sample Call:**
@@ -130,12 +125,8 @@
 
 * **Error Response:**
 
-  * **Code:** 404 <br />
-    **Content:** `{ err : "User not found" }`
+  * **Code:** 400
 
-  OR
-
-  * **Code:** 400 <br/>
 
 * **Sample Call:**
 
@@ -424,8 +415,7 @@
 
 * **Error Response:**
 
-  * **Code:** 404 <br />
-    **Content:** `{ err : 'No results' }`
+  * **Code:** 400
 
 
 * **Sample Call:**
