@@ -21,10 +21,6 @@ server.use(logger('custom', {
     }
 }));
 
-server.listen(server_port, server_ip_address, function() {
-    console.log('%s listening at %s', server.name, server.url);
-});
-
 //routes
 server.get('/users', function(req, res, next){
     User.find({}, '-_id username md5', function(err, doc){
@@ -58,4 +54,38 @@ server.del('/user/:username', function(req, res, next) {
 	});
 
 	return next();
+});
+
+server.post('/user', function(req, res, next) {
+	var user = new User({
+		gender: req.params.gender, 
+		name: req.params.name,
+		location: req.params.location,
+		email: req.params.email,
+		username: req.params.username,
+		password: req.params.password,
+		salt: req.params.salt,
+		md5: req.params.md5,
+		sha1: req.params.sha1,
+		sha256: req.params.sha256,
+		registered: req.params.registered,
+		dob: req.params.dob, 
+		phone: req.params.phone, 
+		cell: req.params.cell, 
+		PPS: req.params.PPS,
+		picture: req.params.picture
+	});
+
+	user.save(function(err) {
+		if(err) res.send(400, {
+			err:err.message, 
+			details:err.errors
+		});
+
+		else res.send(201);
+	})
+});
+
+server.listen(server_port, server_ip_address, function() {
+    console.log('%s listening at %s', server.name, server.url);
 });
