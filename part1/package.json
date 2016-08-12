@@ -4,7 +4,8 @@
   "description": "Redhat mobile rest API solution",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "node init-db.js"
   },
   "repository": {
     "type": "git",
@@ -18,6 +19,8 @@
   "homepage": "https://github.com/JameelB/redhat-practical-exercises#readme",
   "dependencies": {
     "mongoose": "^4.5.8",
-    "restify": "^4.1.1"
+    "request": "^2.74.0",
+    "restify": "^4.1.1",
+    "restify-logger": "^2.0.1"
   }
 }
