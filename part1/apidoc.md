@@ -150,3 +150,103 @@
       }
     });
   ```
+
+**ADD USER**
+* **URL**
+
+  /user
+
+* **Method:**
+
+  `POST`
+*  **URL Params**
+
+  None
+
+* **Data Params**
+
+  **(Required)**
+  ```
+    gender = <String>,
+    name = {
+      title = <String>,
+      first =<String>,
+      last = <String>
+    },
+    location = {
+      street = <String>,
+      city = <String>,
+      state = <String>,
+      zip = <Integer>
+    }
+    email = <String>
+    username = <String>,
+    password = <String>,
+    salt = <String>,
+    md5 = <String>,
+    sha1 = <String>,
+    sha256 = <String>,
+    registered = <Date>,
+    dob = <Date>,
+    phone = <String>,
+    cell = <String>,
+    PPS = <String>,
+    picture = {
+      large = <String>
+      medium = <String>
+      thumbnail = <String>
+    }
+
+  ```
+
+* **Success Response:**
+
+  * **Code:** 201 <br />
+
+* **Error Response:**
+
+  * **Code:** 400 <br />
+
+* **Sample Call:**
+
+  ```javascript
+    $.ajax({
+      url: "/users/beautifulfish360",
+      data: {
+        "gender": "male",
+        "name": {
+          "title": "mr",
+          "first": "andy",
+          "last": "adams"
+        },
+        "location": {
+          "street": "5857 woodlawn avenue",
+          "city": "Westport",
+          "state": "alaska",
+          "zip": 71280
+        },
+        "email": "andy.adams@example.com",
+        "username": "beautifulfish360",
+        "password": "123457",
+        "salt": "HsxzewdQ",
+        "md5": "5809e5fda81eed34bad9ca6eff414924",
+        "sha1": "6c95f0d9210e88028074d4baaeefc3d6c830a9a3",
+        "sha256": "f92fc585c017d093b03dba898162613380f137f934637c5bf9050fe68c103c54",
+        "registered": 1180746503,
+        "dob": 1028583070,
+        "phone": "041-252-0953",
+        "cell": "081-567-1935",
+        "PPS": "2470896T",
+        "picture": {
+          "large": "https://randomuser.me/api/portraits/men/75.jpg",
+          "medium": "https://randomuser.me/api/portraits/med/men/75.jpg",
+          "thumbnail": "https://randomuser.me/api/portraits/thumb/men/75.jpg"
+        }
+      },
+      dataType: "json",
+      type : "POST",
+      success : function(r) {
+        console.log(r);
+      }
+    });
+  ```
