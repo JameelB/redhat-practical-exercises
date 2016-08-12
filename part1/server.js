@@ -24,3 +24,15 @@ server.use(logger('custom', {
 server.listen(server_port, server_ip_address, function() {
     console.log('%s listening at %s', server.name, server.url);
 });
+
+//routes
+server.get('/users', function(req, res, next){
+    User.find({}, '-_id username md5', function(err, doc){
+        if(err) res.send(400, err);
+        else {
+        	res.send(doc.map(function(obj) {
+        		return{ md5: obj.md5, uri: 'user/' + obj.username };
+        	})); 
+    	}
+    }).lean();
+});
