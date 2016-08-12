@@ -34,18 +34,19 @@ server.get('/users', function(req, res, next){
 });
 
 server.get('/user/:username', function(req, res, next) {
-	var filter = '-_id ';
-	if(req.params.filter) filter += req.params.filter.replace(/,/g, ' ');
+    var filter = '-_id '
+    if (req.params.filter) filter += req.params.filter.replace(/,/g, ' ');
 
-	User.findOne({
-		username : req.params.username
-	}, filter, function(err, user) {
-		if(err) res.send(400, err);
-		if(user) res.send(user);
-		else res.send(404, {
-			err: 'User not found'
-		});
-	}).lean();
+    User.findOne({
+        username: req.params.username
+    }, filter, function(err, user) {
+        if (err) res.send(400, err);
+        if (user) res.send(user);
+        else res.send(404, {
+            err: 'user not found'
+        });
+    }).lean();
+    return next();
 });
 
 server.del('/user/:username', function(req, res, next) {
@@ -113,22 +114,17 @@ server.put('/user/:username', function(req, res, next) {
 		picture: req.params.picture
 	}}, function(err) {
 		if(err) res.send(400, err);
-		else res.send(204)
+		else res.send(201)
 	});
 });
 
 server.get('/users/search', function(req, res, next) {
-	var filter = '-_id ';
-	if(req.params.filter) {
-		filter += req.params.filter.replace(/,/g, ' ');
-		delete req.params.filter;
-	}
 
 	Object.keys(req.params).forEach(function(key) {
 		req.params[key] = new RegExp(req.params[key], 'i');
 	});
 
-	User.find(req.params, filter, function(err, doc) {
+	User.find(req.params, '-_id', function(err, doc) {
 		if(err) res.send(400, err);
 		if(doc) res.send(doc);
 	}).lean();
