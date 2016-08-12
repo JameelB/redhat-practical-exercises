@@ -51,12 +51,18 @@
 
     * **Code:** 400 <br />
     * **Content:**
-      ```
-        {
-          err: <String>,
-          details: <Object> [Optional]
-        }
-      ```
+    ```
+      {
+        err: <String>
+      }
+    ```
+    OR
+    ```
+      {
+        err: <String>,
+        details: <Object>
+      }
+    ```
 
 
   * **Sample Call:**
@@ -72,7 +78,7 @@
       });
     ```
 
-**SHOW USER**
+**GET USER**
 * **URL**
 
   /user/:username
@@ -134,12 +140,18 @@
 
   * **Code:** 400
   * **Content:**
-    ```
-      {
-        err: <String>,
-        details: <Object> [Optional]
-      }
-    ```
+  ```
+    {
+      err: <String>
+    }
+  ```
+  OR
+  ```
+    {
+      err: <String>,
+      details: <Object>
+    }
+  ```
 
 * **Sample Call:**
 
@@ -154,7 +166,6 @@
       }
     });
   ```
-<<<<<<< HEAD
 
 **ADD USER**
 * **URL**
@@ -212,12 +223,18 @@
 
   * **Code:** 400 <br />
   * **Content:**
-    ```
-      {
-        err: <String>,
-        details: <Object> [Optional]
-      }
-    ```
+  ```
+    {
+      err: <String>
+    }
+  ```
+  OR
+  ```
+    {
+      err: <String>,
+      details: <Object>
+    }
+  ```
 
 * **Sample Call:**
 
@@ -289,12 +306,18 @@
 
   * **Code:** 400 <br />
   * **Content:**
-    ```
-      {
-        err: <String>,
-        details: <Object> [Optional]
-      }
-    ```
+  ```
+    {
+      err: <String>
+    }
+  ```
+  OR
+  ```
+    {
+      err: <String>,
+      details: <Object>
+    }
+  ```
 
 
 * **Sample Call:**
@@ -313,7 +336,7 @@
 **UPDATE USER**
 * **URL**
 
-  /user
+  /user/:username
 
 * **Method:**
 
@@ -366,12 +389,18 @@
 
   * **Code:** 400 <br />
   * **Content:**
-    ```
-      {
-        err: <String>,
-        details: <Object> [Optional]
-      }
-    ```
+  ```
+    {
+      err: <String>
+    }
+  ```
+  OR
+  ```
+    {
+      err: <String>,
+      details: <Object>
+    }
+  ```
 
 
 * **Sample Call:**
@@ -428,14 +457,9 @@
 
 *  **URL Params**
 
-  **Search Query: (Optional)**
+  **Search Query:**
   ```
-    [field]=<String>
-  ```
-
-  **Filter: (Optional)**
-  ```
-    filter=<String>,<String>,<String
+    field=<String>
   ```
 
 * **Data Params**
@@ -453,19 +477,23 @@
   * **Content:**
     ```
       {
-        err: <String>,
-        details: <Object> [Optional]
+        err: <String>
       }
     ```
-
+    OR
+    ```
+      {
+        err: <String>,
+        details: <Object>
+      }
+    ```
 
 * **Sample Call:**
 
   ```javascript
-    var filters = ['username', 'email', 'location'];
-    var query = "username=beautiful&gender=female";
+    var query = "username=beautiful";
     $.ajax({
-      url: "/users/beautifulfish360?filter=" + filters.join(',') "&" + query,
+      url: "/users/beautifulfish360?" + query,
       dataType: "json",
       type : "GET",
       success : function(r) {
