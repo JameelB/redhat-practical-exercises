@@ -659,13 +659,14 @@
           "thumbnail": "https://randomuser.me/api/portraits/thumb/men/8.jpg"
         }
       }
-      ]
+    ]
     ```
 
 * **Error Response:**
 
   * **Code:** 400 <br/>
   * **Content:**
+
     ```
       {
         err: <String>
