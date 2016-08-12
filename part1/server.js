@@ -25,10 +25,15 @@ server.use(logger('custom', {
 server.get('/users', function(req, res, next){
     User.find({}, '-_id username md5', function(err, doc){
         if(err) res.send(400, err);
-        else {
+        if(doc.length != 0) {
         	res.send(doc.map(function(obj) {
         		return{ md5: obj.md5, uri: 'user/' + obj.username };
         	})); 
+        }
+        else {
+        	res.send(404, {
+        		err: 'No users available'
+        	})
     	}
     }).lean();
 });
@@ -43,7 +48,7 @@ server.get('/user/:username', function(req, res, next) {
 		if(err) res.send(400, err);
 		if(user) res.send(user);
 		else res.send(404, {
-			err: 'User not found.'
+			err: 'User not found'
 		});
 	}).lean();
 });
