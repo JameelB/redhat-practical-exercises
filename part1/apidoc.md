@@ -50,6 +50,13 @@
   * **Error Response:**
 
     * **Code:** 400 <br />
+    * **Content:**
+      ```
+        {
+          err: <String>,
+          details: <Object> [Optional]
+        }
+      ```
 
 
   * **Sample Call:**
@@ -126,7 +133,13 @@
 * **Error Response:**
 
   * **Code:** 400
-
+  * **Content:**
+    ```
+      {
+        err: <String>,
+        details: <Object> [Optional]
+      }
+    ```
 
 * **Sample Call:**
 
@@ -198,6 +211,13 @@
 * **Error Response:**
 
   * **Code:** 400 <br />
+  * **Content:**
+    ```
+      {
+        err: <String>,
+        details: <Object> [Optional]
+      }
+    ```
 
 * **Sample Call:**
 
@@ -268,6 +288,13 @@
 * **Error Response:**
 
   * **Code:** 400 <br />
+  * **Content:**
+    ```
+      {
+        err: <String>,
+        details: <Object> [Optional]
+      }
+    ```
 
 
 * **Sample Call:**
@@ -338,6 +365,13 @@
 * **Error Response:**
 
   * **Code:** 400 <br />
+  * **Content:**
+    ```
+      {
+        err: <String>,
+        details: <Object> [Optional]
+      }
+    ```
 
 
 * **Sample Call:**
@@ -415,7 +449,14 @@
 
 * **Error Response:**
 
-  * **Code:** 400
+  * **Code:** 400 <br/>
+  * **Content:**
+    ```
+      {
+        err: <String>,
+        details: <Object> [Optional]
+      }
+    ```
 
 
 * **Sample Call:**
