@@ -86,6 +86,35 @@ server.post('/user', function(req, res, next) {
 	})
 });
 
+server.put('/user/:username', function(req, res, next) {
+	User.findOneAndUpdate({
+		username: req.params.username
+	}, {
+		$set: {
+			gender: req.params.gender, 
+			name: req.params.name,
+			location: req.params.location,
+			email: req.params.email,
+			username: req.params.username,
+			password: req.params.password,
+			salt: req.params.salt,
+			md5: req.params.md5,
+			sha1: req.params.sha1,
+			sha256: req.params.sha256,
+			registered: req.params.registered,
+			dob: req.params.dob, 
+			phone: req.params.phone, 
+			cell: req.params.cell, 
+			PPS: req.params.PPS,
+			picture: req.params.picture
+		}
+	}, function(err) {
+		if(err) res.send(400, err);
+		else res.send(204)
+	});
+});
+
 server.listen(server_port, server_ip_address, function() {
     console.log('%s listening at %s', server.name, server.url);
 });
+
