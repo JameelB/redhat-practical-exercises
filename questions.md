@@ -31,6 +31,10 @@ applications?**
     * Perform unit tests in each service and perform integration tests to verify communication between each service. At the end, perform an end-to-end test to make sure it works together as an entire system and meet its goals.
 
 
+  * **Q.3 If you were working on a new feature along with several other distributed team members and you became blocked and unable to continue with your work in a productive manner, how would you go about resolving the problem so that you could continue on?**
+    * First, find out the root cause of the issue. Then, you can provide and list possible solutions to fix the problem. The possible solutions are evaluated to determine the pros and cons of each solution and how it will affect how the feature will work overall. Fix the problem with the determined best solution.
+
+
   * **Q4. What do you value in a code base?**
     * Have a good structure and adhere to a standard to make it easier to read, maintain, refactor and extend.
 
