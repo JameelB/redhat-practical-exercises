@@ -2,12 +2,18 @@
 /* db.connect will need to be called a total of 10 times before it successfully
 connects */
 var counter = 0 ;
-var callback =  function (err) {
+var delay = 10;
+
+var callback = function (err) {
   if (err) {
     console.error(err);
-    return db.connect(callback);
+    delay = delay * 2;
+    setTimeout ( function() {db.connect(callback)}, delay);
+    return;
   }
-  console .log ( 'successfully connected!' );
+
+  console.log ( 'successfully connected!' );
+
 };
 
 var db = {
