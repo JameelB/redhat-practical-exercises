@@ -19,18 +19,37 @@ describe('Users', () => {
             done();
         });
     });
+
     describe('/GET users', () => {
-        it('it should GET all the user stubs', (done) => {
+        it('it should GET all user stubs', (done) => {
+          var user = new User(testUser);
+          user.save((err) => {
             chai.request(serverUrl)
-                .get('/users')
-                .end((err, res) => {
-                    res.should.have.status(200);
-                    res.body.should.be.a('array');
-                    res.body.length.should.be.eql(0);
-                    done();
-                });
+              .get('/users')
+              .end((err, res) => {
+                  res.should.have.status(200);
+                  res.body.should.be.a('array');
+                  res.body.length.should.be.eql(1);
+                  res.body[0].should.have.property('md5');
+                  res.body[0].should.have.property('uri');
+                  res.body[0].should.not.have.property('_id');
+                  done();
+              });
+          });
+        });
+
+        it('it should return an empty array if no users are available', (done) => {
+          chai.request(serverUrl)
+            .get('/users')
+            .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('array');
+                res.body.length.should.be.eql(0);
+                done();
+            });
         });
     });
+
     describe('/POST user', () => {
         it('it should not POST a user that does not match the user model', (done) => {
             var user = Object.assign({}, testUser);
@@ -66,7 +85,7 @@ describe('Users', () => {
             var user = new User(testUser);
             user.save((err) => {
                 chai.request(serverUrl)
-                    .get('/user/' + testUser.username)
+                    .get('/user/' + user.username)
                     .end((err, res) => {
                         res.should.have.status(200);
                         res.body.should.be.a('object');
