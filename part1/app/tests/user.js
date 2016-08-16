@@ -95,9 +95,39 @@ describe('Users', () => {
                         done();
                     });
             });
+        });
 
+        it('it should GET a user and filter by their username, location and email', (done)=> {
+          var user = new User(testUser);
+          user.save((err) => {
+            chai.request(serverUrl)
+              .get('/user/' + user.username + '?filter=username,location,email')
+              .end((err, res) => {
+                res.should.have.status(200);
+                res.body.should.be.a('object');
+                res.body.should.have.property('username').eql(testUser.username);
+                res.body.should.have.property('location');
+                res.body.should.have.property('email');
+                res.body.should.not.have.property('_id');
+                res.body.should.not.have.property('gender');
+                done();
+              });
+          });
+        });
+
+        it('it should return an error upon an attempt to GET a user that does not exist', (done)=> {
+          var user = new User(testUser);
+          chai.request(serverUrl)
+            .get('/user/sample')
+            .end((err, res) => {
+              res.should.have.status(404);
+              res.should.have.be.a('object');
+              res.body.should.have.property('err').eql('user not found');
+              done();
+            });
         });
     });
+
     describe('/PUT/:username user', () => {
         it('it should UPDATE a user matching the provided username', (done) => {
             var updatedUser = Object.assign({}, testUser);
@@ -106,7 +136,7 @@ describe('Users', () => {
             var user = new User(testUser);
             user.save((err) => {
                 chai.request(serverUrl)
-                    .put('/user/' + testUser.username)
+                    .put('/user/' + user.username)
                     .send(updatedUser)
                     .end((err, res) => {
                         res.should.have.status(201);
