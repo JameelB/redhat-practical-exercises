@@ -146,6 +146,21 @@ describe('Users', () => {
             });
         });
     });
+
+    describe('/DEL/:username user', () => {
+      it('it should DELETE a user matching the provided username', (done) => {
+        var user = new User(testUser);
+        user.save((err) => {
+          chai.request(serverUrl)
+            .del('/user/' + user.username)
+            .end((err, res) => {
+              res.should.have.status(204);
+              done();
+            });
+        });
+      });
+    });
+
     describe('/GET/users/search user', () => {
         it('it should search for a user given one or many user properties', (done) => {
             var user =  new User(testUser);
