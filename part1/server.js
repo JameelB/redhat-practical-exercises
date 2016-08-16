@@ -5,8 +5,8 @@ const logger = require('restify-logger');
 const config = require('./app/config');
 const User = require('./app/models/user');
 
-const server_port = process.env.OPENSHIFT_NODEJS_PORT || 8081;
-const server_ip_address = process.env.OPENSHIFT_NODEJS_IP || '127.0.0.1';
+const server_port = 8081;
+const server_ip_address = '127.0.0.1';
 
 mongoose.connect(config.mongo);
 
