@@ -24,12 +24,10 @@ server.use(logger('custom', {
 //routes
 server.get('/users', function(req, res, next){
     User.find({}, '-_id username md5', function(err, doc){
-        if(err) res.send(400, err);
-        if(doc) {
-        	res.send(doc.map(function(obj) {
-        		return{ md5: obj.md5, uri: 'user/' + obj.username };
-        	}));
-        }
+        if(err) return res.send(400, err);
+      	res.send(doc.map(function(obj) {
+      		return{ md5: obj.md5, uri: 'user/' + obj.username };
+      	}));
     }).lean();
 });
 
@@ -46,18 +44,25 @@ server.get('/user/:username', function(req, res, next) {
             err: 'user not found'
         });
     }).lean();
-    return next();
 });
 
 server.del('/user/:username', function(req, res, next) {
 	User.findOne({
 		username : req.params.username
-	}).remove(function(err) {
-		if(err) res.send(400, err);
-		else res.send(204);
-	});
-
-	return next();
+	}, function(err, user) {
+    if(err) res.send(400,err);
+    if(user) {
+      user.remove(function(err) {
+        if(err) return res.send(400, err);
+        res.send(204);
+      });
+    }
+    else {
+      res.send(404, {
+        err: 'User not found'
+      })
+    }
+  });
 });
 
 server.post('/user', function(req, res, next) {
@@ -81,12 +86,11 @@ server.post('/user', function(req, res, next) {
 	});
 
 	user.save(function(err) {
-		if(err) res.send(400, {
+		if(err) return res.send(400, {
 			err:err.message,
 			details:err.errors
 		});
-
-		else res.send(201);
+		res.send(201);
 	})
 });
 
@@ -113,8 +117,8 @@ server.put('/user/:username', function(req, res, next) {
 		PPS: req.params.PPS,
 		picture: req.params.picture
 	}}, function(err) {
-		if(err) res.send(400, err);
-		else res.send(201)
+		if(err) return res.send(400, err);
+		res.send(201)
 	});
 });
 
@@ -125,11 +129,9 @@ server.get('/users/search', function(req, res, next) {
 	});
 
 	User.find(req.params, '-_id', function(err, doc) {
-		if(err) res.send(400, err);
-		if(doc) res.send(doc);
+		if(err) return res.send(400, err);
+		res.send(doc);
 	}).lean();
-
-	return next();
 });
 
 server.listen(server_port, server_ip_address, function() {
