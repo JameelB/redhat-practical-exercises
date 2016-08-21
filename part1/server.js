@@ -23,10 +23,10 @@ server.use(logger('custom', {
 
 //routes
 server.get('/users', function(req, res, next){
-    User.find({}, '-_id username md5 picture', function(err, doc){
+    User.find({}, '-_id username md5 picture location', function(err, doc){
         if(err) return res.send(400, err);
       	res.send(doc.map(function(obj) {
-      		return{ username: obj.username, picture: obj.picture, md5: obj.md5, uri: 'user/' + obj.username };
+      		return{ username: obj.username, picture: obj.picture, location: obj.location, md5: obj.md5, uri: 'user/' + obj.username };
       	}));
     }).lean();
 });
