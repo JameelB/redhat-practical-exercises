@@ -25,25 +25,36 @@
 
         ```
           [{
-            "md5": "b7441c556f250fe6ebb3367ba708d4b6",
-            "uri": "user/crazybear293"
-          },
-          {
-            "md5": "5809e5fda81eed34bad9ca6eff414924",
-            "uri": "user/beautifulfish360"
-          },
-          {
-            "md5": "96cf4434a0bc4a36abc62ff24364b1cd",
-            "uri": "user/redlion798"
-          },
-          {
-            "md5": "3268a90b4cb3ad3c766f1547349dfc9e",
-            "uri": "user/silverswan291"
-          },
-          {
-            "md5": "846548fc6a8d2baff5dd9c4c380559b1",
-            "uri": "user/bluepeacock968"
-          }]
+        "username": "tinywolf709",
+        "picture": {
+          "large": "https://randomuser.me/api/portraits/women/60.jpg",
+          "medium": "https://randomuser.me/api/portraits/med/women/60.jpg",
+          "thumbnail": "https://randomuser.me/api/portraits/thumb/women/60.jpg"
+        },
+        "md5": "bbdd6140e188e3bf68ae7ae67345df65",
+        "uri": "user/tinywolf709"
+      },
+      {
+        "username": "crazybear293",
+        "picture": {
+          "large": "https://randomuser.me/api/portraits/women/19.jpg",
+          "medium": "https://randomuser.me/api/portraits/med/women/19.jpg",
+          "thumbnail": "https://randomuser.me/api/portraits/thumb/women/19.jpg"
+        },
+        "md5": "b7441c556f250fe6ebb3367ba708d4b6",
+        "uri": "user/crazybear293"
+      },
+      {
+        "username": "beautifulfish360",
+        "picture": {
+          "large": "https://randomuser.me/api/portraits/men/75.jpg",
+          "medium": "https://randomuser.me/api/portraits/med/men/75.jpg",
+          "thumbnail": "https://randomuser.me/api/portraits/thumb/men/75.jpg"
+        },
+        "md5": "5809e5fda81eed34bad9ca6eff414924",
+        "uri": "user/beautifulfish360"
+      },
+      ...]
 
         ```
 
